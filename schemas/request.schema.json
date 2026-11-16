@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Request",
+  "type": "object",
+  "properties": {
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/InputFile"
+      }
+    },
+    "framework": {
+      "type": "string",
+      "default": "nist-ai-rmf"
+    },
+    "system": {
+      "type": "string",
+      "default": "Untitled AI system"
+    },
+    "trust_store": {
+      "$ref": "#/$defs/TrustStore",
+      "default": {
+        "keys": []
+      }
+    }
+  },
+  "required": [
+    "files"
+  ],
+  "$defs": {
+    "InputFile": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "data"
+      ]
+    },
+    "TrustStore": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrustedKey"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "keys"
+      ]
+    },
+    "TrustedKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "public_key": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "public_key",
+        "label"
+      ]
+    }
+  }
+}

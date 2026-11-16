@@ -1,0 +1,52 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "atlas-llm",
+      "description": "Customer support language model",
+      "modelCard": {
+        "considerations": {
+          "useCases": [
+            "Assisted customer support"
+          ]
+        }
+      },
+      "name": "Atlas language model",
+      "type": "machine-learning-model",
+      "version": "2.4.0"
+    },
+    {
+      "bom-ref": "atlas-embed",
+      "name": "Text embedding model",
+      "type": "machine-learning-model",
+      "version": "3.0"
+    },
+    {
+      "bom-ref": "atlas-data",
+      "name": "Knowledge base dataset",
+      "type": "data",
+      "version": "2026.11"
+    },
+    {
+      "bom-ref": "atlas-runtime",
+      "name": "Inference runtime",
+      "type": "library",
+      "version": "1.8.2"
+    },
+    {
+      "bom-ref": "atlas-review",
+      "name": "Human review gateway",
+      "type": "application",
+      "version": "1.2.0"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "name": "Atlas AI Assistant",
+      "type": "application",
+      "version": "2.4.0"
+    }
+  },
+  "specVersion": "1.6",
+  "version": 1
+}

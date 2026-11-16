@@ -1,0 +1,14 @@
+{
+  "name": "aegis-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "setup": "npm --prefix web/verifier ci && npm run wasm",
+    "wasm": "wasm-pack build crates/aegis-wasm --target web --out-dir ../../web/verifier/src/wasm --release --no-opt",
+    "dev": "npm --prefix web/verifier run dev",
+    "build": "npm run wasm && npm --prefix web/verifier run build",
+    "preview": "npm --prefix web/verifier run preview",
+    "test": "cargo test --workspace && cargo build -p aegis-cli && npm --prefix web/verifier test",
+    "fixtures": "cargo run -p aegis-core --example fixtures"
+  }
+}

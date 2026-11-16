@@ -1,0 +1,65 @@
+{
+  "id": "eu-ai-act",
+  "title": "EU AI Act",
+  "version": "2024/1689 / technical subset v0.1",
+  "status": "draft",
+  "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727",
+  "source_text_version": "Consolidated Regulation (EU) 2024/1689, 27 July 2026",
+  "verified_on": "2026-11-16",
+  "controls": [
+    {
+      "id": "ART. 12",
+      "title": "Record-keeping",
+      "description": "Draft technical evidence checklist for automatic logging.",
+      "requirements": [
+        {
+          "label": "Authenticated operational logs (unsupported)",
+          "kind": "OperationalLog",
+          "min_strength": "Verified",
+          "field": null
+        },
+        {
+          "label": "System inventory",
+          "kind": "Inventory",
+          "min_strength": "Asserted",
+          "field": null
+        }
+      ],
+      "limitation": "Signed attestations are not operational logs. Logging scope, retention, and legal applicability require review."
+    },
+    {
+      "id": "ART. 14",
+      "title": "Human oversight",
+      "description": "Draft technical evidence checklist for oversight measures.",
+      "requirements": [
+        {
+          "label": "Approved oversight design (unsupported)",
+          "kind": "OversightDesign",
+          "min_strength": "Verified",
+          "field": null
+        },
+        {
+          "label": "Oversight execution records (unsupported)",
+          "kind": "OversightRecord",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "No supported input establishes effective human oversight."
+    },
+    {
+      "id": "ART. 50",
+      "title": "Transparency obligations",
+      "description": "Draft technical evidence checklist for relevant disclosure measures.",
+      "requirements": [
+        {
+          "label": "Disclosure and marking records (unsupported)",
+          "kind": "DisclosureRecord",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "Applicable transparency duties depend on role and system context; the MVP does not assess either."
+    }
+  ]
+}

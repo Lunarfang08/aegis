@@ -1,0 +1,18 @@
+import json
+from pathlib import Path
+root = Path(__file__).resolve().parents[1]
+def requirement(label, kind, strength='Asserted', field=None):
+    return dict(label=label, kind=kind, min_strength=strength, field=field)
+def control(id, title, desc, requirements, limitation):
+    return dict(id=id, title=title, description=desc, requirements=requirements, limitation=limitation)
+nist = dict(id='nist-ai-rmf', title='NIST AI RMF', version='1.0 / technical subset v0.1', status='draft', source='https://airc.nist.gov/airmf-resources/airmf/5-sec-core/', source_text_version='AI RMF 1.0 (2023)', verified_on='2026-11-16', controls=[
+control('GOVERN 1.6','AI system inventory','Technical subset: presence of a structured component inventory.',[requirement('Structured AI inventory','Inventory')],'An inventory file does not demonstrate organizational coverage, maintenance, or adequate resources.'),
+control('MAP 1.1','Intended use and context','Technical subset: model use-case metadata and a reviewed context assessment.',[requirement('Documented model use cases','Inventory',field='/modelCard/considerations/useCases'),requirement('Reviewed context assessment (unsupported)','ContextAssessment','Verified')],'Model metadata alone does not establish context, affected stakeholders, or legal applicability.'),
+control('MEASURE 2.1','Evaluation methodology','Technical subset: scan output and a documented evaluation methodology.',[requirement('Authenticated scan output','Scan','Verified'),requirement('Evaluation methodology (unsupported)','EvaluationMethod','Verified')],'Static analysis does not establish model performance, evaluation suitability, or testing coverage.'),
+control('GOVERN 4.3','Testing and incident practices','Technical subset: testing output plus documented incident procedures.',[requirement('Testing output','Scan'),requirement('Incident process record (unsupported)','IncidentProcess','Verified')],'A scan does not prove an operational incident process or information sharing.'),
+control('MANAGE 1.1','Risk response decisions','Technical subset: documented and approved risk response decisions.',[requirement('Approved risk decision (unsupported)','RiskDecision','Verified')],'Generic attestations are not interpreted as risk acceptance or authorization decisions.')])
+eu = dict(id='eu-ai-act', title='EU AI Act', version='2024/1689 / technical subset v0.1', status='draft', source='https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727', source_text_version='Consolidated Regulation (EU) 2024/1689, 27 July 2026', verified_on='2026-11-16', controls=[
+control('ART. 12','Record-keeping','Draft technical evidence checklist for automatic logging.',[requirement('Authenticated operational logs (unsupported)','OperationalLog','Verified'),requirement('System inventory','Inventory')],'Signed attestations are not operational logs. Logging scope, retention, and legal applicability require review.'),
+control('ART. 14','Human oversight','Draft technical evidence checklist for oversight measures.',[requirement('Approved oversight design (unsupported)','OversightDesign','Verified'),requirement('Oversight execution records (unsupported)','OversightRecord','Verified')],'No supported input establishes effective human oversight.'),
+control('ART. 50','Transparency obligations','Draft technical evidence checklist for relevant disclosure measures.',[requirement('Disclosure and marking records (unsupported)','DisclosureRecord','Verified')],'Applicable transparency duties depend on role and system context; the MVP does not assess either.')])
+for f in (nist,eu): (root/'mappings'/f'{f["id"]}.json').write_text(json.dumps(f,indent=2)+'\n')

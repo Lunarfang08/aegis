@@ -1,0 +1,11 @@
+export type InputFile = {name:string;data:string};
+export type TrustStore = {keys:{id:string;public_key:string;label:string}[]};
+export type Request = {files:InputFile[];trust_store:TrustStore;framework:string;system:string};
+export type Check = {name:string;status:string;reason:string};
+export type Evidence = {id:string;title:string;kind:string;format:string;source:string;pointer:string;status:string;signer:string|null;checks:Check[];normalized:unknown};
+export type Requirement = {label:string;met:boolean;evidence_ids:string[]};
+export type Control = {id:string;title:string;description:string;status:string;requirements:Requirement[];evidence_ids:string[];limitation:string};
+export type Framework = {id:string;title:string;version:string;status:string;source:string;source_text_version:string;verified_on:string;controls:unknown[]};
+export type InputRecord = {name:string;sha256:string;bytes:number;format:string;accepted:boolean;reason:string|null;raw:string;encoding:string};
+export type Summary = {files:number;accepted:number;rejected:number;evidence:number;valid:number;asserted:number;invalid:number;unverifiable:number;evidenced:number;partial:number;missing:number;broken:number};
+export type Report = {schema_version:string;engine_version:string;report_id:string;system:string;framework:Framework;inputs:InputRecord[];evidence:Evidence[];controls:Control[];summary:Summary;limitations:string};

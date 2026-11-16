@@ -1,0 +1,99 @@
+{
+  "id": "nist-ai-rmf",
+  "title": "NIST AI RMF",
+  "version": "1.0 / technical subset v0.1",
+  "status": "draft",
+  "source": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+  "source_text_version": "AI RMF 1.0 (2023)",
+  "verified_on": "2026-11-16",
+  "controls": [
+    {
+      "id": "GOVERN 1.6",
+      "title": "AI system inventory",
+      "description": "Technical subset: presence of a structured component inventory.",
+      "requirements": [
+        {
+          "label": "Structured AI inventory",
+          "kind": "Inventory",
+          "min_strength": "Asserted",
+          "field": null
+        }
+      ],
+      "limitation": "An inventory file does not demonstrate organizational coverage, maintenance, or adequate resources."
+    },
+    {
+      "id": "MAP 1.1",
+      "title": "Intended use and context",
+      "description": "Technical subset: model use-case metadata and a reviewed context assessment.",
+      "requirements": [
+        {
+          "label": "Documented model use cases",
+          "kind": "Inventory",
+          "min_strength": "Asserted",
+          "field": "/modelCard/considerations/useCases"
+        },
+        {
+          "label": "Reviewed context assessment (unsupported)",
+          "kind": "ContextAssessment",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "Model metadata alone does not establish context, affected stakeholders, or legal applicability."
+    },
+    {
+      "id": "MEASURE 2.1",
+      "title": "Evaluation methodology",
+      "description": "Technical subset: scan output and a documented evaluation methodology.",
+      "requirements": [
+        {
+          "label": "Authenticated scan output",
+          "kind": "Scan",
+          "min_strength": "Verified",
+          "field": null
+        },
+        {
+          "label": "Evaluation methodology (unsupported)",
+          "kind": "EvaluationMethod",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "Static analysis does not establish model performance, evaluation suitability, or testing coverage."
+    },
+    {
+      "id": "GOVERN 4.3",
+      "title": "Testing and incident practices",
+      "description": "Technical subset: testing output plus documented incident procedures.",
+      "requirements": [
+        {
+          "label": "Testing output",
+          "kind": "Scan",
+          "min_strength": "Asserted",
+          "field": null
+        },
+        {
+          "label": "Incident process record (unsupported)",
+          "kind": "IncidentProcess",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "A scan does not prove an operational incident process or information sharing."
+    },
+    {
+      "id": "MANAGE 1.1",
+      "title": "Risk response decisions",
+      "description": "Technical subset: documented and approved risk response decisions.",
+      "requirements": [
+        {
+          "label": "Approved risk decision (unsupported)",
+          "kind": "RiskDecision",
+          "min_strength": "Verified",
+          "field": null
+        }
+      ],
+      "limitation": "Generic attestations are not interpreted as risk acceptance or authorization decisions."
+    }
+  ]
+}

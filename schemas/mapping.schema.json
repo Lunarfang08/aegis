@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Framework",
+  "type": "object",
+  "properties": {
+    "controls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ControlRule"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "source_text_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "verified_on": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "version",
+    "status",
+    "source",
+    "source_text_version",
+    "verified_on",
+    "controls"
+  ],
+  "$defs": {
+    "ControlRule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "limitation": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Requirement"
+          }
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "requirements",
+        "limitation"
+      ]
+    },
+    "Requirement": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "kind": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "min_strength": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "kind",
+        "min_strength"
+      ]
+    }
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report",
+  "type": "object",
+  "properties": {
+    "controls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ControlResult"
+      }
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      }
+    },
+    "framework": {
+      "$ref": "#/$defs/Framework"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/InputRecord"
+      }
+    },
+    "limitations": {
+      "type": "string"
+    },
+    "report_id": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "summary": {
+      "$ref": "#/$defs/Summary"
+    },
+    "system": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "report_id",
+    "system",
+    "framework",
+    "inputs",
+    "evidence",
+    "controls",
+    "summary",
+    "limitations"
+  ],
+  "$defs": {
+    "Check": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "status",
+        "reason"
+      ]
+    },
+    "ControlResult": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "limitation": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RequirementResult"
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "status",
+        "requirements",
+        "evidence_ids",
+        "limitation"
+      ]
+    },
+    "ControlRule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "limitation": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Requirement"
+          }
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "requirements",
+        "limitation"
+      ]
+    },
+    "Evidence": {
+      "type": "object",
+      "properties": {
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Check"
+          }
+        },
+        "format": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "normalized": true,
+        "pointer": {
+          "type": "string"
+        },
+        "signer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "format",
+        "source",
+        "pointer",
+        "status",
+        "checks",
+        "normalized"
+      ]
+    },
+    "Framework": {
+      "type": "object",
+      "properties": {
+        "controls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ControlRule"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_text_version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "verified_on": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "version",
+        "status",
+        "source",
+        "source_text_version",
+        "verified_on",
+        "controls"
+      ]
+    },
+    "InputRecord": {
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "bytes": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "raw": {
+          "type": "string"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "sha256",
+        "bytes",
+        "format",
+        "accepted",
+        "raw",
+        "encoding"
+      ]
+    },
+    "Requirement": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "kind": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "min_strength": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "kind",
+        "min_strength"
+      ]
+    },
+    "RequirementResult": {
+      "type": "object",
+      "properties": {
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "met": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "label",
+        "met",
+        "evidence_ids"
+      ]
+    },
+    "Summary": {
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "asserted": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "broken": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "evidenced": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "files": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "invalid": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "missing": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "partial": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "rejected": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "unverifiable": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        },
+        "valid": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "files",
+        "accepted",
+        "rejected",
+        "evidence",
+        "valid",
+        "asserted",
+        "invalid",
+        "unverifiable",
+        "evidenced",
+        "partial",
+        "missing",
+        "broken"
+      ]
+    }
+  }
+}
