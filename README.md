@@ -142,6 +142,14 @@ npm run preview
 
 Open **http://127.0.0.1:4173** once while online. A service worker caches only the application assets. After installation, reload offline and verify evidence. Development mode does not install the offline cache. Evidence, keys, and results are kept in memory and cleared on reload or reset.
 
+### Deploy on Vercel
+
+Import this repository into Vercel and deploy it with the included `vercel.json`.
+The project is a static Vite application: verification runs locally in a Web
+Worker through the packaged Rust WebAssembly engine, with no server or environment
+variables required. Vercel installs the frontend dependencies, builds
+`web/verifier/dist`, and serves the generated offline cache with safe headers.
+
 ## CLI quickstart
 
 ```sh
